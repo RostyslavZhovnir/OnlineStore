@@ -1,0 +1,199 @@
+<div class="container" *ngIf="_addItemForm">
+
+<form #addItemForm="ngForm" (ngSubmit)="onAddItem(addItemForm)">
+  <div class="form-group">
+    <div class="form-group">
+      <input type="text" class="form-control" id="Title" name="Title" placeholder="Title" ngModel #Title="ngModel">
+    </div>
+    <div class="form-group">
+      <textarea class="form-control" rows="5" id="Description" name="Description" placeholder="Description" ngModel #Description="ngModel"> </textarea>
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" id="Price" name="Price" placeholder="Price" ngModel #Price="ngModel">
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" id="Source" name="Source" placeholder="Source" ngModel #Price="ngModel">
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Додати товар</button>
+  <button type="submit"  (click) = "this._addItemForm = false" class="btn btn-danger">Відмінити</button>
+</form>
+
+</div>
+
+
+
+
+
+<div class="container">
+    <button type="button" *ngIf ="!_addItemForm && _buyForm" (click) = "onAdd()" class="btn btn-success">Додати товар</button>
+  <div class="row" *ngIf="_buyForm">
+    <div class="col-sm" *ngFor="let item of items; let i = index">
+      <br>
+      <div class="card" style="width: 15rem;">
+        <img class="card-img-top" src="assets/images/index.png" alt="oooo">
+        <div class="card-block">
+          <h4 class="card-title">{{item.Title}}</h4>
+          <p class="card-text">{{item.Description}}</p>
+
+          <button class="btn btn-primary" (click)="onBuyItem(item.Title)">Купити</button>
+          <a class="yellow-price">{{item.Price | currency}}</a>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!_buyForm">
+
+    <form #purchaseForm="ngForm" (ngSubmit)="onValidatePurchase(purchaseForm)"  >
+      <div class="form-group">
+
+        <div class="form-group">
+          <input type="text" class="form-control" id="fName" name="fName" placeholder="Ім'я" ngModel required #fname="ngModel" >
+          <p *ngIf ="fname.invalid && fname.touched" >* введіть ваше Ім'я</p>
+        </div>
+
+        <div class="form-group">
+          <input type="text" class="form-control" id="lName" name="lName" placeholder="Прізвище" ngModel required #lname="ngModel">
+          <p *ngIf ="lname.invalid && lname.touched" >* введіть ваше Прізвище</p>
+        </div>
+
+        <div class="form-group">
+          <input type="text" class="form-control" id="phone" name="phone"  placeholder="Телефон" ngModel  required #phone="ngModel">
+          <p *ngIf ="phone.invalid && phone.touched" >* введіть контактний номер телефону</p>
+        </div>
+
+        <div class="form-group">
+          <input type="text" class="form-control" id="email" name="email" placeholder="Email" ngModel  required email #email="ngModel">
+          <p *ngIf ="email.invalid && email.touched" >* введіть коректну адресу електронної пошти</p>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+          <input type="text" class="form-control" id="skype" placeholder="Skype (Необов'язково)">
+        </div>
+
+         <div class="form-group col-md-6">
+           <input type="text" class="form-control" id="viber" placeholder="Viber (Необов'язково)">
+        </div>
+
+        <div class="form-group col-md-1">
+          <input type="text" class="form-control" id="country" value="Україна" disabled>
+        </div>
+
+        <div class="form-group col-md-2">
+            <input type="text" class="form-control" id="city" name="city" placeholder="Місто" ngModel required #city="ngModel">
+            <p *ngIf ="city.invalid && city.touched" >* введіть назву міста</p>
+        </div>
+
+        <div class="form-group col-md-3" >
+          <input type="text" class="form-control" id="street" name="street"  placeholder="Вулиця" ngModel required #street="ngModel">
+          <p *ngIf ="street.invalid && street.touched" >* введіть вулицю </p>
+        </div>
+
+        <div class="form-group col-md-2">
+          <input type="text" class="form-control" id="bldNumb" name="bldNumb" placeholder="Будинок"ngModel  required  #bldNumb="ngModel">
+          <p *ngIf ="bldNumb.invalid && bldNumb.touched" >* введіть номер будинку </p>
+          </div>
+          <div class="form-group col-md-2">
+            <input type="email" class="form-control" id="aptNumb" placeholder="Квартира">
+          </div>
+
+        <div class="form-group col-md-2">
+          <input type="text" class="form-control" id="zip" name="zip" pattern="^\d{5}$" placeholder="Поштовий Індекс" ngModel required #zip="ngModel">
+          <p *ngIf ="zip.invalid && zip.touched" >* невірний поштовий індекс </p>
+        </div>
+        </div>
+
+      </div>
+
+
+      <table class="table table-hover">
+          <thead>
+              <tr class="table-success">
+              <th scope="col">Ваше замовлення</th>
+             <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              
+              <th scope="row" style="padding-left: 0px;">
+                  <div class="card" style="width: 12rem;">
+                      <img class="card-img-top" src="assets/images/index.png" alt="Card image cap">
+                      <div class="card-body">
+                        <h6 class="card-title">{{selectItem.Title}}</h6>
+                        <p class="card-text">{{selectItem.Description}}</p>
+                      </div>
+                    </div>
+              </th>
+              <td><pre>
+                 Вартість товару: {{selectItem.Price | currency}}
+                 Вартість доставки: {{shipingCost  | currency}}
+                 <b>Загальна вартість до сплати: {{selectItem.Price + shipingCost | currency}}</b>
+
+              </pre></td>
+               </tr>
+
+
+          </tbody>
+        </table>
+
+
+
+
+
+    <hr>
+
+
+  <p>Договір купівлі :</p>
+      <div class="card">
+          <div class="card-body">
+            <pre>
+Розрахунок проводиться через систему PayPal - це найкраще рішення як для вас , так і для нас.
+Середня тривалість доставки складає від 2 тижнів.
+Після оплати на протязі 24 годин ми надішлемо Вам Tracking Number за допомогою якого ви зможете
+слідкувати переміщення вашого замовлення по світу (всі інструкції будуть в листі).
+Усі податки та вартість доставки є зазначенні у пункті "Загальна вартість".
+Найкраща курєрська служба для пересилок з США, котра має досвід понад 25 років.
+Усі посилки супроводжуються накладною митною декларацією.
+Доставка в будь-яке місце України 365 днів на рік на домашню адресу, адресу офісу, ресторану, школи..
+До міст: Вінниця, Дніпропетровськ, Донецьк, Житомир, Запоріжжя, Івано-Франківськ, Київ, Кіровоград, Львів, Луцьк,
+Луганськ, Миколаїв, Одеса, Полтава, Рівне, Сімферополь, Суми, Тернопіль, Ужгород, Харків, Херсон, Хмельницький,
+Черкаси, Чернігів, Чернівці.
+Ви можете безкоштовно залучити привітання довжиною до 20 слів на українській, англійській або російській мові.
+Замовлення можна скасувати, якщо повідомити нас не більше 2х годин після здійснення оплати.
+Замовлення не можна скасувати, якщо воно вже є приготоване до пересилки, тобто більше 2х годин після здійснення оплати.
+Відшкодування не надається у випадку відсутності отримувача чи його відмови прийняти посилку, або в разі затримки
+доставки через форс-мажорні обставини.
+Якщо при отриманні посилки ви виявили явні механічні пошкодження коробки чи її вмісту, слід повідомити кур’єру і скласти
+на місці протокол,а також зробити фотофіксацію. Також потрібно надіслати заяву (в електронному вигляді) на електронну пошту:
+claim.
+Ми обов'язково з'ясуємо ситуацію та допоможемо з відшкодуванням.
+</pre>
+          </div>
+
+        </div>
+        <br>
+
+        <div>
+            <input type="checkbox" id="chkIagree" name="vehicle" value="Я приймаю всі умови купівлі" (change)='toggleButton = !toggleButton' >
+            <label for="chkIagree">Я приймаю усі умови купівлі</label>
+          </div>
+
+        <div class="col-md-12 text-center">
+        <button type="submit" class="btn btn-primary" [disabled]="toggleButton || purchaseForm.invalid ">Оформити Замовлення</button>
+
+      <button class="btn btn-danger" (click)="onCancelPurchase()">Відмінити</button>
+        </div>
+
+
+      </form>
+  </div>
+
+
+
+
+
+</div>
