@@ -1,199 +1,393 @@
-<div class="container" *ngIf="_addItemForm">
+<div class="sidenavright">
+    <i class="material-icons" style="font-size:36px;color:red">card_giftcard</i>
+    <p>Усі товари супроводжуються перехідником на Європейський струм 220 Вольт</p>
+    
+    <i class="material-icons" style="font-size:36px;color:red">phonelink_lock</i>
+    <p>Tracking Number - можливість стеження де знаходиться ваше замовлення в даний момент live! online!</p>
 
-<form #addItemForm="ngForm" (ngSubmit)="onAddItem(addItemForm)">
-  <div class="form-group">
-    <div class="form-group">
-      <input type="text" class="form-control" id="Title" name="Title" placeholder="Title" ngModel #Title="ngModel">
-    </div>
-    <div class="form-group">
-      <textarea class="form-control" rows="5" id="Description" name="Description" placeholder="Description" ngModel #Description="ngModel"> </textarea>
-    </div>
-    <div class="form-group">
-      <input type="text" class="form-control" id="Price" name="Price" placeholder="Price" ngModel #Price="ngModel">
-    </div>
-    <div class="form-group">
-      <input type="text" class="form-control" id="Source" name="Source" placeholder="Source" ngModel #Price="ngModel">
-    </div>
-  </div>
-  <button type="submit" class="btn btn-primary">Додати товар</button>
-  <button type="submit"  (click) = "this._addItemForm = false" class="btn btn-danger">Відмінити</button>
-</form>
+    <i class="material-icons" style="font-size:36px;color:red">airplanemode_active</i>
+    <p>Ми використовуєму  найкращу курєрську службу для пересилок із США, котра має досвід понад 25 років.
+      Усі товари супроводжуються накладною митною декларацією та є застраховані.</p>
+
+      <i class="material-icons" style="font-size:36px;color:red">call</i>
+      <p>Ми на звязку 24/7 та будемо раді обговорити з вами всі деталі</p>
+      <p>Viber: +17733326250 </p>
+      <p>Skype: tiptopmax </p>
+      <p>Instagram : tiptopmax</p>
+    
 
 </div>
-
-
-
-
-
-<div class="container">
-    <button type="button" *ngIf ="!_addItemForm && _buyForm" (click) = "onAdd()" class="btn btn-success">Додати товар</button>
-  <div class="row" *ngIf="_buyForm">
-    <div class="col-sm" *ngFor="let item of items; let i = index">
-      <br>
-      <div class="card" style="width: 15rem;">
-        <img class="card-img-top" src="assets/images/index.png" alt="oooo">
-        <div class="card-block">
-          <h4 class="card-title">{{item.Title}}</h4>
-          <p class="card-text">{{item.Description}}</p>
-
-          <button class="btn btn-primary" (click)="onBuyItem(item.Title)">Купити</button>
-          <a class="yellow-price">{{item.Price | currency}}</a>
-
+  <div class="sidenav" >
+          <a href="http://localhost:4200/" (click)="ngOnInit()">Головна</a>
+          <a href="#laptopsforeducation" (click)="laptopsforeducation()">Ноутбуки для навчання (до 400$)</a>
+          <a href="#laptopsforbussines"(click)="laptopsforbussines()">Ноутбуки для бізнессу (від 400$)</a>
+          <a href="#laptopsapple"(click)="laptopsapple()">Ноутбуки Apple (MacBook, MacBook Air, MacBook Pro)</a>
+          <a href="#ipad"(click)="ipad()">Планшети Apple (Ipad)</a>
+          <a href="#androidtablets"(click)="androidtablets()">Планшети Android</a>
+          <a href="#computersapple"(click)="computersapple()">Комп'ютери Apple (iMac, iMac Pro, Mac Pro, Mac mini)</a>
+          <a href="#dslrcameras"(click)="dslrcameras()">Професійні фотоапарати (DSLR)</a>
+          <a href="#drones"(click)="drones()">Дрони</a>
         </div>
-      </div>
-    </div>
-  </div>
+        
+        <div class="main">
+            
+            <div class="container-fluid">
+                <i class="material-icons" style="font-size:30px;color:red">important_devices </i>
+                 <h2>TipTop<b style="color:red">Max</b> <small>інтернет магазин вживаної електроніки з США</small> </h2>
+                
 
-  <div *ngIf="!_buyForm">
-
-    <form #purchaseForm="ngForm" (ngSubmit)="onValidatePurchase(purchaseForm)"  >
-      <div class="form-group">
-
-        <div class="form-group">
-          <input type="text" class="form-control" id="fName" name="fName" placeholder="Ім'я" ngModel required #fname="ngModel" >
-          <p *ngIf ="fname.invalid && fname.touched" >* введіть ваше Ім'я</p>
-        </div>
-
-        <div class="form-group">
-          <input type="text" class="form-control" id="lName" name="lName" placeholder="Прізвище" ngModel required #lname="ngModel">
-          <p *ngIf ="lname.invalid && lname.touched" >* введіть ваше Прізвище</p>
-        </div>
-
-        <div class="form-group">
-          <input type="text" class="form-control" id="phone" name="phone"  placeholder="Телефон" ngModel  required #phone="ngModel">
-          <p *ngIf ="phone.invalid && phone.touched" >* введіть контактний номер телефону</p>
-        </div>
-
-        <div class="form-group">
-          <input type="text" class="form-control" id="email" name="email" placeholder="Email" ngModel  required email #email="ngModel">
-          <p *ngIf ="email.invalid && email.touched" >* введіть коректну адресу електронної пошти</p>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group col-md-6">
-          <input type="text" class="form-control" id="skype" placeholder="Skype (Необов'язково)">
-        </div>
-
-         <div class="form-group col-md-6">
-           <input type="text" class="form-control" id="viber" placeholder="Viber (Необов'язково)">
-        </div>
-
-        <div class="form-group col-md-1">
-          <input type="text" class="form-control" id="country" value="Україна" disabled>
-        </div>
-
-        <div class="form-group col-md-2">
-            <input type="text" class="form-control" id="city" name="city" placeholder="Місто" ngModel required #city="ngModel">
-            <p *ngIf ="city.invalid && city.touched" >* введіть назву міста</p>
-        </div>
-
-        <div class="form-group col-md-3" >
-          <input type="text" class="form-control" id="street" name="street"  placeholder="Вулиця" ngModel required #street="ngModel">
-          <p *ngIf ="street.invalid && street.touched" >* введіть вулицю </p>
-        </div>
-
-        <div class="form-group col-md-2">
-          <input type="text" class="form-control" id="bldNumb" name="bldNumb" placeholder="Будинок"ngModel  required  #bldNumb="ngModel">
-          <p *ngIf ="bldNumb.invalid && bldNumb.touched" >* введіть номер будинку </p>
-          </div>
-          <div class="form-group col-md-2">
-            <input type="email" class="form-control" id="aptNumb" placeholder="Квартира">
-          </div>
-
-        <div class="form-group col-md-2">
-          <input type="text" class="form-control" id="zip" name="zip" pattern="^\d{5}$" placeholder="Поштовий Індекс" ngModel required #zip="ngModel">
-          <p *ngIf ="zip.invalid && zip.touched" >* невірний поштовий індекс </p>
-        </div>
-        </div>
-
-      </div>
+              </div>
+            <div>
+          <div class="container">
 
 
-      <table class="table table-hover">
-          <thead>
-              <tr class="table-success">
-              <th scope="col">Ваше замовлення</th>
-             <th scope="col"></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              
-              <th scope="row" style="padding-left: 0px;">
-                  <div class="card" style="width: 12rem;">
-                      <img class="card-img-top" src="assets/images/index.png" alt="Card image cap">
-                      <div class="card-body">
-                        <h6 class="card-title">{{selectItem.Title}}</h6>
-                        <p class="card-text">{{selectItem.Description}}</p>
-                      </div>
+
+            <div class="container" *ngIf="_addItemForm" id="buyForm">
+          
+              <form #addItemForm="ngForm" (ngSubmit)="onAddItem(addItemForm)">
+                  <div id="backButton">
+                      <button class="btn btn-primary" (click)="this._addItemForm = false">X</button>
                     </div>
-              </th>
-              <td><pre>
-                 Вартість товару: {{selectItem.Price | currency}}
-                 Вартість доставки: {{shipingCost  | currency}}
-                 <b>Загальна вартість до сплати: {{selectItem.Price + shipingCost | currency}}</b>
+                    <h4>Додати новий товар</h4>
+                <div class="form-group">
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="Title" name="Title" placeholder="Title" ngModel #Title="ngModel">
+                  </div>
+                  <div class="form-group">
+                    <textarea class="form-control" rows="5" id="Description" name="Description" placeholder="Description" ngModel #Description="ngModel"> </textarea>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="Price" name="Price" placeholder="Price" ngModel #Price="ngModel">
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="Source" name="Source" placeholder="Source" ngModel #Price="ngModel">
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="im1" name="im1" placeholder="im1" ngModel #im1="ngModel">
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="im2" name="im2" placeholder="im2" ngModel #im2="ngModel">
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="im3" name="im3" placeholder="im3" ngModel #im3="ngModel">
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="im4" name="im4" placeholder="im4" ngModel #im4="ngModel">
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="im5" name="im5" placeholder="im5" ngModel #im5="ngModel">
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="im6" name="im6" placeholder="im6" ngModel #im6="ngModel">
+                  </div>
+                  <div class="form-group">
+                    <label>Виберіть категорію товару зі списку:</label>
+                    <select name="Category" ngModel >
+                      <option *ngFor="let prf of options" [ngValue]="prf.value">
+                          {{ prf.name }}
+                      </option>
+                  </select> 
+                 
 
-              </pre></td>
-               </tr>
+                </div>
+                  
+                  
 
 
-          </tbody>
-        </table>
+                </div>
+                <button type="submit" class="btn btn-primary">Додати товар</button>
+          
+                <button type="submit" (click)="this._addItemForm = false" class="btn btn-danger">Відмінити</button>
+                <br>
+              </form>
+          
+            </div>
+          
+          
+          
+            <div class="container">
+          
 
+              <div id="purchaseAlert">
+                <div class="alert alert-primary alert-dismissible fade show" role="alert" *ngIf = "_purchaseAlert">
+                    <strong>Замовлення прийнято</strong> На протязі 2х годин ви отримаєте лист підтвердження на електронну пошту.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+          
+              <button type="button" *ngIf="!_addItemForm && _buyForm" (click)="onAdd()" class="btn btn-success">Додати товар</button>
+              <a routerLink="orders">
+                <button class="btn btn-success pull-right" *ngIf="!_addItemForm && _buyForm">Список замовлень</button>
+              </a>
+              </div>
+          
+          
+              <div class="row" *ngIf="_buyForm">
+                
+                <div class="col-sm" *ngFor="let item of items; let i = index">
+                  <br>
+          
+                  <div class="card"  *ngIf="item.im1.indexOf('h') !== -1">
+          
+                    <img class="card-img-top" src="{{item.im1}}" alt="oooo">
+          
+                    <div class="card-block">
+          
+                      <a class="lightbox" href="#{{item.id}}">
+                        <img src="{{item.im1}}" />
+          
+                      </a>
+          
+                      <a class="lightbox" href="#{{item.id+500000}}" *ngIf="item.im2.indexOf('h') !== -1">
+                        <img src="{{item.im2}}" />
+                      </a>
+          
+                      <a class="lightbox" href="#{{item.id+600000}}" *ngIf="item.im3.indexOf('h') !== -1">
+                        <img src="{{item.im3}}" />
+          
+                      </a>
+          
+                      <a class="lightbox" href="#{{item.id+700000}}" *ngIf="item.im4.indexOf('h') !== -1">
+                        <img src="{{item.im4}}" />
+                      </a>
+          
+                      <a class="lightbox" href="#{{item.id+800000}}" *ngIf="item.im5.indexOf('h') !== -1">
+                        <img src="{{item.im5}}" />
+                      </a>
+          
+          
+          
+          
+                      <div class="lightbox-target" id="{{item.id}}">
+                        <img src="{{item.im1}}" />
+                        <a class="lightbox-close" href="#"></a>
+                      </div>
+          
+                      <div class="lightbox-target" id="{{item.id+500000}}">
+                        <img src="{{item.im2}}" />
+                        <a class="lightbox-close" href="#"></a>
+                      </div>
+          
+                      <div class="lightbox-target" id="{{item.id+600000}}">
+                        <img src="{{item.im3}}" />
+                        <a class="lightbox-close" href="#"></a>
+                      </div>
+          
+                      <div class="lightbox-target" id="{{item.id+700000}}">
+                        <img src="{{item.im4}}" />
+                        <a class="lightbox-close" href="#"></a>
+                      </div>
+          
+                      <div class="lightbox-target" id="{{item.id+800000}}">
+                        <img src="{{item.im5}}" />
+                        <a class="lightbox-close" href="#"></a>
+                      </div>
+          
+          
+          
+                      <h4 class="card-title">{{item.Title}}</h4>
 
-
-
-
-    <hr>
-
-
-  <p>Договір купівлі :</p>
-      <div class="card">
-          <div class="card-body">
-            <pre>
-Розрахунок проводиться через систему PayPal - це найкраще рішення як для вас , так і для нас.
-Середня тривалість доставки складає від 2 тижнів.
-Після оплати на протязі 24 годин ми надішлемо Вам Tracking Number за допомогою якого ви зможете
-слідкувати переміщення вашого замовлення по світу (всі інструкції будуть в листі).
-Усі податки та вартість доставки є зазначенні у пункті "Загальна вартість".
-Найкраща курєрська служба для пересилок з США, котра має досвід понад 25 років.
-Усі посилки супроводжуються накладною митною декларацією.
-Доставка в будь-яке місце України 365 днів на рік на домашню адресу, адресу офісу, ресторану, школи..
-До міст: Вінниця, Дніпропетровськ, Донецьк, Житомир, Запоріжжя, Івано-Франківськ, Київ, Кіровоград, Львів, Луцьк,
-Луганськ, Миколаїв, Одеса, Полтава, Рівне, Сімферополь, Суми, Тернопіль, Ужгород, Харків, Херсон, Хмельницький,
-Черкаси, Чернігів, Чернівці.
-Ви можете безкоштовно залучити привітання довжиною до 20 слів на українській, англійській або російській мові.
-Замовлення можна скасувати, якщо повідомити нас не більше 2х годин після здійснення оплати.
-Замовлення не можна скасувати, якщо воно вже є приготоване до пересилки, тобто більше 2х годин після здійснення оплати.
-Відшкодування не надається у випадку відсутності отримувача чи його відмови прийняти посилку, або в разі затримки
-доставки через форс-мажорні обставини.
-Якщо при отриманні посилки ви виявили явні механічні пошкодження коробки чи її вмісту, слід повідомити кур’єру і скласти
-на місці протокол,а також зробити фотофіксацію. Також потрібно надіслати заяву (в електронному вигляді) на електронну пошту:
-claim.
-Ми обов'язково з'ясуємо ситуацію та допоможемо з відшкодуванням.
-</pre>
-          </div>
-
+                
+                   
+                    
+                     <p id="details" *ngIf="showme != i"(click)="showhide(i)"> Детальніше... </p>
+                     <p id="details" *ngIf="showme == i" (click)="showme=null"> Сховати </p>
+                      <p *ngIf="showme == i" class="card-text">{{item.Description}}</p>
+                   
+                      <button class="btn btn-primary" (click)="onBuyItem(item.Title, item.Price)">Купити</button>
+                      <a class="yellow-price">Вартість: {{item.Price | currency}}</a>
+          
+                    </div>
+          
+                  </div>
+          
+                </div>
+          
+              </div>
+         
+              <div *ngIf="!_buyForm" id="buyForm">
+                <div id="backButton">
+                  <button class="btn btn-primary" (click)="onCancelPurchase()">X</button>
+                </div>
+                <h4>Купити товар</h4>
+                <form #purchaseForm="ngForm" (ngSubmit)="onValidatePurchase(purchaseForm)">
+                  <div class="form-group">
+          
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="fName" name="fName" placeholder="Ім'я" ngModel required #fname="ngModel">
+                      <p *ngIf="fname.invalid && fname.touched">* введіть ваше Ім'я</p>
+                    </div>
+          
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="lName" name="lName" placeholder="Прізвище" ngModel required #lname="ngModel">
+                      <p *ngIf="lname.invalid && lname.touched">* введіть ваше Прізвище</p>
+                    </div>
+          
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="phone" name="phone" placeholder="Телефон" ngModel required #phone="ngModel">
+                      <p *ngIf="phone.invalid && phone.touched">* введіть контактний номер телефону</p>
+                    </div>
+          
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="email" name="email" placeholder="Email" ngModel required email #email="ngModel">
+                      <p *ngIf="email.invalid && email.touched">* введіть коректну адресу електронної пошти</p>
+                    </div>
+          
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <input type="text" class="form-control" id="skype" name="skype" placeholder="Skype (Необов'язково)" ngModel #Skype="ngModel">
+                      </div>
+          
+                      <div class="form-group col-md-6">
+                        <input type="text" class="form-control" id="viber" name="viber" placeholder="Viber (Необов'язково)" ngModel #Viber="ngModel">
+                      </div>
+          
+                      <div class="form-group col-md-1">
+                        <input type="text" class="form-control" id="country" name="country" value="Україна" disabled>
+                      </div>
+          
+                      <div class="form-group col-md-2">
+                        <input type="text" class="form-control" id="city" name="city" placeholder="Місто" ngModel required #city="ngModel">
+                        <p *ngIf="city.invalid && city.touched">* введіть назву міста</p>
+                      </div>
+          
+                      <div class="form-group col-md-3">
+                        <input type="text" class="form-control" id="street" name="street" placeholder="Вулиця" ngModel required #street="ngModel">
+                        <p *ngIf="street.invalid && street.touched">* введіть вулицю </p>
+                      </div>
+          
+                      <div class="form-group col-md-2">
+                        <input type="text" class="form-control" id="bldNumb" name="bldNumb" placeholder="Будинок" ngModel required #bldNumb="ngModel">
+                        <p *ngIf="bldNumb.invalid && bldNumb.touched">* введіть номер будинку </p>
+                      </div>
+                      <div class="form-group col-md-2">
+                        <input type="email" class="form-control" id="aptNumb" name="aptNumb" placeholder="Квартира" ngModel required #aptNumb="ngModel">
+                      </div>
+          
+                      <div class="form-group col-md-2">
+                        <input type="text" class="form-control" id="zip" name="zip" pattern="^\d{5}$" placeholder="Поштовий Індекс" ngModel required #zip="ngModel">
+                        <p *ngIf="zip.invalid && zip.touched">* невірний поштовий індекс </p>
+                      </div>
+                      <input type="hidden" class="form-control" id="country" name="sLink"  [(ngModel)]="selectItem.Source" ngModel #sLink="ngModel" >
+                      <input type="hidden" class="form-control" id="country" name="sPrice"  [(ngModel)]="selectItem.Price" ngModel #sPrice="ngModel" >
+                      <input type="hidden" class="form-control" id="country" name="sId"  [(ngModel)]="selectItem.id" ngModel #sId="ngModel" >
+                    </div>
+                   
+                  </div>
+          
+          
+                  <table class="table table-hover">
+                    <thead>
+                      <tr class="table-success">
+                        <th scope="col">Ваше замовлення</th>
+                        <th scope="col"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+          
+                        <th scope="row" style="padding-left: 0px;">
+                          <div class="card" style="width: 17rem;">
+                            <img class="card-img-top" src="{{selectItem.im1}}" alt="Card image cap">
+                            <div class="card-body">
+                              <h6 class="card-title">{{selectItem.Title}}</h6>
+                              <p class="card-text">{{selectItem.Description}}</p>
+                            </div>
+                          </div>
+                        </th>
+                        <td>
+                          
+                           Вартість товару: {{selectItem.Price | currency}}
+                           Вартість доставки: {{shipingCost  | currency}}
+                           <b>Загальна вартість до сплати: {{selectItem.Price + shipingCost | currency}}</b>
+          
+                      
+                        </td>
+                      </tr>
+          
+          
+                    </tbody>
+                  </table>
+          
+          
+          
+          
+          
+                  <hr>
+          
+                  <table class="table table-hover">
+                    <thead>
+                      <tr class="table-success">
+                        <th scope="col">Договір купівлі :</th>
+                        <th scope="col"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+          
+                        <th scope="row" style="padding-left: 0px;">
+                         
+          Розрахунок проводиться через систему PayPal - це найкраще рішення як для вас , так і для нас.
+          Середня тривалість доставки складає від 2 тижнів.
+          Після оплати на протязі 24 годин ми надішлемо Вам Tracking Number за допомогою якого ви зможете
+          слідкувати переміщення вашого замовлення по світу (всі інструкції будуть в листі).
+          Усі податки, вартість доставки та комісії банку включені у "Загальну вартість".
+          Найкраща курєрська служба для пересилок з США, котра має досвід понад 25 років.
+          Усі посилки супроводжуються накладною митною декларацією.
+          Доставка в будь-яке місце України 365 днів на рік на домашню адресу, адресу офісу, ресторану, школи..
+          До міст: Вінниця, Дніпропетровськ, Донецьк, Житомир, Запоріжжя, Івано-Франківськ, Київ, Кіровоград, Львів, Луцьк,
+          Луганськ, Миколаїв, Одеса, Полтава, Рівне, Сімферополь, Суми, Тернопіль, Ужгород, Харків, Херсон, Хмельницький,
+          Черкаси, Чернігів, Чернівці.
+          Ви можете безкоштовно залучити привітання довжиною до 20 слів на українській, англійській або російській мові.
+          Замовлення можна скасувати, якщо повідомити нас не більше 2х годин після здійснення оплати.
+          Замовлення не можна скасувати, якщо воно вже є приготоване до пересилки, тобто більше 2х годин після здійснення оплати.
+          Відшкодування не надається у випадку відсутності отримувача чи його відмови прийняти посилку, або в разі затримки
+          доставки через форс-мажорні обставини.
+          Якщо при отриманні посилки ви виявили явні механічні пошкодження коробки чи її вмісту, слід повідомити кур’єру і скласти
+          на місці протокол,а також зробити фотофіксацію. Також потрібно надіслати заяву (в електронному вигляді) на електронну пошту:
+          claim.
+          Ми обов'язково з'ясуємо ситуацію та допоможемо з відшкодуванням.
+                              
+                        </th>
+          
+                      </tr>
+          
+          
+                    </tbody>
+                  </table>
+          
+                  <br>
+          
+                  <div>
+                    <input type="checkbox" id="chkIagree" name="vehicle" value="Я приймаю всі умови купівлі" (change)='toggleButton = !toggleButton'
+                      [disabled]="purchaseForm.invalid ">
+                    <label for="chkIagree">Я приймаю усі умови купівлі</label>
+          
+                  </div>
+          
+                  <div class="col-md-12 text-center">
+                    <!-- <button type="submit" class="btn btn-primary" [disabled]="toggleButton || purchaseForm.invalid ">Оформити Замовлення</button> -->
+                    <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+                    <button class="btn btn-danger" (click)="onCancelPurchase()">Відмінити</button>
+                  </div>
+          
+          
+                </form>
+              </div>
+          
+          
+          
+          
+          
+            </div>
+        </div>    
+        <div class="footer-copyright py-3 text-center">
+            © 2018 Created by Rostyslav Zhovnir:
+            <a href="www.tiptopmax.com"> www.tiptopmax.com </a>
         </div>
-        <br>
-
-        <div>
-            <input type="checkbox" id="chkIagree" name="vehicle" value="Я приймаю всі умови купівлі" (change)='toggleButton = !toggleButton' >
-            <label for="chkIagree">Я приймаю усі умови купівлі</label>
-          </div>
-
-        <div class="col-md-12 text-center">
-        <button type="submit" class="btn btn-primary" [disabled]="toggleButton || purchaseForm.invalid ">Оформити Замовлення</button>
-
-      <button class="btn btn-danger" (click)="onCancelPurchase()">Відмінити</button>
-        </div>
-
-
-      </form>
-  </div>
+      </div>
+     
 
 
 
-
-
-</div>

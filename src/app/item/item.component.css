@@ -1,3 +1,20 @@
+@media only screen and (max-width: 768px) {
+    /* For mobile: */
+    .sidenavright {
+        display: none;
+    }
+    .main {
+             width: 100%;
+          }
+
+          #buyForm{
+            width: 100%;
+       
+        }
+}
+
+
+
 .yellow-price {
     background: #ffe66a;
     border-radius: 4px;
@@ -8,6 +25,305 @@
     border: 1px solid transparent;
     float: right;
 }
+
+.container-fluid {
+
+background-color: #022b51;
+color: white;
+}
+
 input.ng-invalid.ng-touched {
 border: 1px solid red;    
+}
+
+
+.sidenavright {
+    height: 100%;
+    width: 200px;
+   
+    padding-top: 85px;
+    margin-right: 5px;
+    position: fixed;
+ color: #818181;
+    z-index: -1;
+    top: 0;
+    right: 0;
+  background-color: #fff8e5;
+    overflow-x: hidden;
+  
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.021), 0 2px 10px 0 rgba(0, 0, 0, 0.055);
+    -webkit-transition: .25s box-shadow;
+    transition: .25s box-shadow;
+}
+
+
+
+
+.sidenav {
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+  background-color: #fff8e5;
+    overflow-x: hidden;
+    padding-top: 70px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.021), 0 2px 10px 0 rgba(0, 0, 0, 0.055);
+    -webkit-transition: .25s box-shadow;
+    transition: .25s box-shadow;
+}
+
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 14px;
+    color: #818181;
+    display: block;
+}
+
+.sidenav a:hover {
+    color: #00000063;
+}
+
+.main {
+    margin-left: 180px; /* Same as the width of the sidenav */
+    font-size: 14px; /* Increased text to enable scrolling */
+    padding: 0px 1px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 12px;}
+
+    
+}
+
+#buyForm{
+    width: 90%;
+padding-left: 6px;
+padding-right: 6px;  
+padding-bottom: 10px;
+margin-top:10px;
+margin-bottom: 10px;
+
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    -webkit-transition: .25s box-shadow;
+    transition: .25s box-shadow;
+}
+#backButton {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 0px;
+    margin-right: 0px;
+    float: right;
+}
+.table thead th {
+
+color:white;
+}
+
+.table-success, .table-success>td, .table-success>th {
+    background-color: #007bff;
+}
+
+
+#details{
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+    color: tomato;
+}
+
+
+#details:hover {
+    cursor: pointer;
+    font-size: 13.5px;
+    color: #007bff;
+    font-weight: bold;
+}
+
+.card-text {
+
+    font-size: 13px;
+}
+.card {
+    width: 270px;
+    height: auto;
+    overflow: hidden;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    -webkit-transition: .25s box-shadow;
+    transition: .25s box-shadow;
+    right: 10px
+    
+  }
+  
+  .card:focus,
+  .card:hover {
+    
+    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+  }
+  
+  .card-inverse .card-img-overlay {
+    background-color: rgba(51, 51, 51, 0.85);
+    border-color: rgba(51, 51, 51, 0.85);
+  }
+
+
+.card-img-top {
+    width: 270px;
+    height: 240px;
+    border-top-left-radius: calc(.25rem - 1px);
+    border-top-right-radius: calc(.25rem - 1px);
+}
+.card-title {
+    margin-bottom: .75rem;
+    margin-top: 10px;
+    font-size: 13px;
+}
+.col-sm {
+    -ms-flex-preferred-size: 0;
+    flex-basis: 0;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 100%;
+    padding-right: 2px;
+    padding-left: 2px;
+}
+.container {
+    max-width:90%;
+ 
+    margin-left: 12px;
+    margin-right: 0px;
+    padding-left: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+
+}
+
+
+
+
+
+a.lightbox img {
+     margin-top: 5px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+
+height: 50px;
+width: 50px;
+border: 3px solid white;
+box-shadow: 0px 0px 8px rgba(0,0,0,.3);
+
+}
+
+/* Styles the lightbox, removes it from sight and adds the fade-in transition */
+
+.lightbox-target  {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+
+width: 100%;
+height:auto;
+background: rgba(0,0,0,.7);
+
+opacity: 0;
+-webkit-transition: opacity .5s ease-in-out;
+-moz-transition: opacity .5s ease-in-out;
+-o-transition: opacity .5s ease-in-out;
+transition: opacity .5s ease-in-out;
+overflow: visible;
+z-index: 500;
+}
+
+/* Styles the lightbox image, centers it vertically and horizontally, adds the zoom-in transition and makes it responsive using a combination of margin and absolute positioning */
+
+.lightbox-target img {
+margin: auto;
+position: absolute;
+top: 0;
+left:0;
+right:0;
+bottom: 0;
+max-height: 0%;
+max-width: 0%;
+border: 3px solid white;
+box-shadow: 0px 0px 8px rgba(0,0,0,.3);
+box-sizing: border-box;
+-webkit-transition: .5s ease-in-out;
+-moz-transition: .5s ease-in-out;
+-o-transition: .5s ease-in-out;
+transition: .5s ease-in-out;
+}
+
+/* Styles the close link, adds the slide down transition */
+
+a.lightbox-close {
+display: block;
+width:50px;
+height:50px;
+box-sizing: border-box;
+background: white;
+color: black;
+text-decoration: none;
+position: absolute;
+top: -80px;
+right: 0;
+-webkit-transition: .5s ease-in-out;
+-moz-transition: .5s ease-in-out;
+-o-transition: .5s ease-in-out;
+transition: .5s ease-in-out;
+}
+
+/* Provides part of the "X" to eliminate an image from the close link */
+
+a.lightbox-close:before {
+content: "";
+display: block;
+height: 30px;
+width: 1px;
+background: black;
+position: absolute;
+left: 26px;
+top:10px;
+-webkit-transform:rotate(45deg);
+-moz-transform:rotate(45deg);
+-o-transform:rotate(45deg);
+transform:rotate(45deg);
+}
+
+/* Provides part of the "X" to eliminate an image from the close link */
+
+a.lightbox-close:after {
+content: "";
+display: block;
+height: 30px;
+width: 1px;
+background: black;
+position: absolute;
+left: 26px;
+top:10px;
+-webkit-transform:rotate(-45deg);
+-moz-transform:rotate(-45deg);
+-o-transform:rotate(-45deg);
+transform:rotate(-45deg);
+}
+
+/* Uses the :target pseudo-class to perform the animations upon clicking the .lightbox-target anchor */
+
+.lightbox-target:target {
+opacity: 1;
+top: 0;
+bottom: 0;
+}
+
+.lightbox-target:target img {
+max-height: 100%;
+max-width: 100%;
+}
+
+.lightbox-target:target a.lightbox-close {
+top: 0px;
 }

@@ -1,0 +1,46 @@
+<div class="table-responsive">
+    <table class="table-bordered">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Ім'я</th>
+          <th>Фамілія</th>
+          <th>Телефон</th>
+          <th>Email</th>
+          <th>Skype</th>
+          <th>Viber</th>
+          <th>Місто</th>
+          <th>Вулиця</th>
+          <th>Будинок</th>
+          <th>Квартира</th>
+          <th>Zip</th>
+          <th>Source</th>
+          <th>ID з Бази данних (*перевіряти!)</th>
+          <th>Ціна з сайту</th>
+        </tr>
+      </thead>
+      <tbody >
+        <tr *ngFor="let order of allOrders; let i = index">
+          <td>{{order.id}}</td>
+          <td>{{order.fName}}</td>
+          <td>{{order.lName}}</td>
+          <td>{{order.phone}}</td>
+          <td>{{order.email}}</td>
+          <td>{{order.Skype}}</td>
+          <td>{{order.Viber}}</td>
+          <td>{{order.city}}</td>
+          <td>{{order.street}}</td>
+          <td>{{order.bldNumb}}</td>
+          <td>{{order.aptNumb}}</td>
+          <td>{{order.zip}}</td>
+          <td> 
+            <a href="{{order.sLink}}">
+              <button class="btn btn-success">Ebay Listing</button>
+            </a>
+          </td>
+          <td>{{order.sId}}</td>
+          <td>{{order.sPrice}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
