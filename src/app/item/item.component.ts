@@ -30,6 +30,7 @@ export class ItemComponent implements OnInit {
   newItem = [];
  purshaseItem: any;
  showme: number;
+ payPalButton: false;
  options = [
    {name : 'Ноутбуки для навчання (до 400$)' , value : 'laptopsforeducation'},
    {name : 'Ноутбуки для бізнессу (від 400$)' , value : 'laptopsforbussines'},

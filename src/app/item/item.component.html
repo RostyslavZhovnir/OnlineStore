@@ -195,7 +195,7 @@
                      <p id="details" *ngIf="showme == i" (click)="showme=null"> Сховати </p>
                       <p *ngIf="showme == i" class="card-text">{{item.Description}}</p>
                    
-                      <button class="btn btn-primary" (click)="onBuyItem(item.Title, item.Price)">Купити</button>
+                      <button class="btn btn-primary" (click)="onBuyItem(item.Title, item.Price)" >Купити</button>
                       <a class="yellow-price">Вартість: {{item.Price | currency}}</a>
           
                     </div>
@@ -298,9 +298,11 @@
                         </th>
                         <td>
                           
-                           Вартість товару: {{selectItem.Price | currency}}
-                           Вартість доставки: {{shipingCost  | currency}}
-                           <b>Загальна вартість до сплати: {{selectItem.Price + shipingCost | currency}}</b>
+                            <p> Вартість товару: {{selectItem.Price | currency}}</p>  
+                            <p>Вартість доставки: {{shipingCost  | currency}}</p>  
+                            <p><b>Загальна вартість до сплати: {{selectItem.Price + shipingCost | currency}}</b></p>
+                           
+                           
           
                       
                         </td>
@@ -348,7 +350,11 @@
           на місці протокол,а також зробити фотофіксацію. Також потрібно надіслати заяву (в електронному вигляді) на електронну пошту:
           claim.
           Ми обов'язково з'ясуємо ситуацію та допоможемо з відшкодуванням.
-                              
+          <hr>
+          <p style="color:red"><b>УВАГА!! ПЕРЕД ЗДІЙСНЕННЯМ ПЛАТЕЖУ УТОЧНІТЬ НАЯВНІСТЬ ТОВАРУ В ПРОДАВЦЯ : </b></p>
+          <p>Skype :tiptopmax </p>
+          <p>Viber :+17733326250 </p>
+          <p>Instagram :tiptopmax </p>      
                         </th>
           
                       </tr>
@@ -360,15 +366,18 @@
                   <br>
           
                   <div>
+                      <div *ngIf="toggleButton"><p style="color:red">Для продовження оплати введіть інформацію доставки </p> </div>
                     <input type="checkbox" id="chkIagree" name="vehicle" value="Я приймаю всі умови купівлі" (change)='toggleButton = !toggleButton'
-                      [disabled]="purchaseForm.invalid ">
-                    <label for="chkIagree">Я приймаю усі умови купівлі</label>
+                      [disabled]="purchaseForm.invalid " >
+                      
+                    <label for="chkIagree">Я приймаю усі умови купівлі
+                    </label>
           
-                  </div>
+</div>
           
                   <div class="col-md-12 text-center">
                     <!-- <button type="submit" class="btn btn-primary" [disabled]="toggleButton || purchaseForm.invalid ">Оформити Замовлення</button> -->
-                    <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+                  <div id="payPalButton" *ngIf="!toggleButton "><ngx-paypal [config]="payPalConfig"></ngx-paypal></div>  
                     <button class="btn btn-danger" (click)="onCancelPurchase()">Відмінити</button>
                   </div>
           
@@ -383,7 +392,7 @@
             </div>
         </div>    
         <div class="footer-copyright py-3 text-center">
-            © 2018 Created by Rostyslav Zhovnir:
+            © 2018 Created by WeNet:
             <a href="www.tiptopmax.com"> www.tiptopmax.com </a>
         </div>
       </div>
